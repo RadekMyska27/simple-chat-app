@@ -1,13 +1,11 @@
 import './App.css'
-import {Button} from "flowbite-react";
+import {ButtonApp} from "@components"
 
 function App() {
 
     return (
         <div className="App">
-            <Button color="blue" pill>
-                {"Flowbite React Button"}
-            </Button>
+            <ButtonApp/>
         </div>
     )
 }
