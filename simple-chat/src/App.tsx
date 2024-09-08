@@ -1,11 +1,11 @@
 import './App.css'
-import {Button} from "@components"
+import {ButtonApp} from "@components"
 
 function App() {
 
     return (
         <div className="App">
-            <Button/>
+            <ButtonApp/>
         </div>
     )
 }
