@@ -1,0 +1,36 @@
+Example of to sort components, according React standard !!!
+
+src/
+  components/
+    atoms/
+      Button.tsx
+      Input.tsx
+      Label.tsx
+    molecules/
+      InputWithButton.tsx
+      Card.tsx
+      FormGroup.tsx
+    organisms/
+      Header.tsx
+      Footer.tsx
+      Sidebar.tsx
+    templates/
+      MainLayout.tsx
+      DashboardLayout.tsx
+    pages/
+      HomePage.tsx
+      ProfilePage.tsx
+    compositions/
+      SearchBarWithFilters.tsx
+      ProductGridWithSorting.tsx
+    hooks/
+      useAuth.ts
+      useFetch.ts
+    context/
+      AuthContext.tsx
+      ThemeContext.tsx
+    utils/
+      formatDate.ts
+      validateEmail.ts
+    styles/
+      GlobalStyles.ts

@@ -1,11 +1,11 @@
 import './App.css'
-import {ButtonApp} from "@components"
+import {ChatInterface} from "@components"
 
 function App() {
 
     return (
-        <div className="App">
-            <ButtonApp/>
+        <div className="App flex justify-center items-center h-screen">
+            <ChatInterface/>
         </div>
     )
 }

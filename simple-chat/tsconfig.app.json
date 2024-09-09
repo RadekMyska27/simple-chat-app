@@ -27,6 +27,9 @@
       ],
       "@components/*": [
         "./src/components/*"
+      ],
+      "@enums/*": [
+        "./src/enums/*"
       ]
     }
   },
