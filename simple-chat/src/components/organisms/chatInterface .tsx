@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 
-import {Sender} from "@types";
+import {Message, Sender} from "@types";
 import {ChatWindow, InputWithButton} from "@components";
 import {addMessage, RootState, sendMessage} from "@store";
 import {useAppSelector} from "@components/hooks/hooks.tsx";
@@ -9,18 +9,19 @@ import {useAppSelector} from "@components/hooks/hooks.tsx";
 export const ChatInterface = () => {
     const dispatch = useDispatch(); // Correctly typed dispatch
 
-    const messages = useAppSelector((state: RootState) => state.messages.messages);
-    const loading = useAppSelector((state: RootState) => state.messages.loading);
+    const {messages, loading} = useAppSelector((state: RootState) => state.messages);
 
     const [inputValue, setInputValue] = useState<string>("");
 
     const handleSendMessage = () => {
         if (inputValue.trim() === "") return;
 
-        const newMessage = {
+        //TODO date time utils
+        const newMessage: Message = {
             id: messages.length + 1,
             sender: Sender.Me,
             text: inputValue,
+            time: new Date().getHours().toString()
         };
 
         // Add the user's message immediately

@@ -15,7 +15,6 @@ const initialState: MessagesState = {
             id: 1,
             sender: Sender.Partner,
             text: "Hello! How can I help you?",
-            user: {avatar: "", name: "AI"},
             time: new Date().getUTCHours().toString()
         },
     ],
