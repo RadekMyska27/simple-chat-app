@@ -1,4 +1,5 @@
 import {Button} from "flowbite-react";
+import * as React from "react";
 
 interface InputWithButtonProps {
     value: string;
@@ -7,6 +8,13 @@ interface InputWithButtonProps {
 }
 
 export const InputWithButton = ({value, onChange, onSend}: InputWithButtonProps) => {
+    // Function to handle key press
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
+            onSend();
+        }
+    };
+
     return (
         <div className="relative flex items-center w-full">
             <input
@@ -14,6 +22,7 @@ export const InputWithButton = ({value, onChange, onSend}: InputWithButtonProps)
                 value={value}
                 onChange={onChange}
                 placeholder="Type your message..."
+                onKeyDown={handleKeyPress} // Add keydown event handler
                 className="w-full py-2 pl-4 pr-20 text-gray-700 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <Button

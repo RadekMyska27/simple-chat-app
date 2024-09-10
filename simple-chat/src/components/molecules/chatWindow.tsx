@@ -1,9 +1,9 @@
-// Enum for sender roles
-import {Message} from "@components";
+import {Sender} from "@enums";
 
-export enum Sender {
-    Me = "me",
-    Partner = "partner",
+interface Message {
+    id: number;
+    sender: Sender;
+    text: string;
 }
 
 interface ChatWindowProps {
@@ -12,14 +12,15 @@ interface ChatWindowProps {
 
 export const ChatWindow = ({messages}: ChatWindowProps) => {
     return (
-        <div className="w-full max-w-md h-80 overflow-y-auto p-4 border border-gray-300 rounded-md bg-white shadow-sm">
+        <div
+            className="flex flex-col p-4 bg-white shadow-md rounded-lg w-full h-[75vh] overflow-y-auto border border-gray-200">
             {messages.map((message) => (
                 <div
                     key={message.id}
-                    className={`mb-2 p-2 rounded-lg ${
+                    className={`p-2 my-1 max-w-xs rounded-md ${
                         message.sender === Sender.Me
-                            ? "bg-blue-500 text-white self-end"
-                            : "bg-gray-100 text-gray-800 self-start"
+                            ? "ml-auto bg-blue-500 text-white"
+                            : "mr-auto bg-gray-200 text-gray-800"
                     }`}
                 >
                     {message.text}

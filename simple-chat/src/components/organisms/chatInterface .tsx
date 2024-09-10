@@ -7,7 +7,6 @@ import {addMessage, RootState, sendMessage} from "@store";
 import {useAppSelector} from "@components/hooks/hooks.tsx";
 
 export const ChatInterface = () => {
-    // const dispatch = useAppDispatch(); // Correctly typed dispatch
     const dispatch = useDispatch(); // Correctly typed dispatch
 
     const messages = useAppSelector((state: RootState) => state.messages.messages);
@@ -35,9 +34,9 @@ export const ChatInterface = () => {
     };
 
     return (
-        <div className="flex flex-col items-center p-4 w-full max-w-md mx-auto">
+        <div className="flex flex-col items-center p-4 w-full max-w-screen-lg mx-auto space-y-4">
             <ChatWindow messages={messages}/>
-            <div className="mt-4 w-full">
+            <div className="w-full">
                 <InputWithButton
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
