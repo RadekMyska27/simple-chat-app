@@ -1,43 +1,37 @@
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+
 import {Sender} from "@enums";
 import {ChatWindow, InputWithButton} from "@components";
-
-export interface Message {
-    id: number;
-    sender: Sender;
-    text: string;
-}
+import {addMessage, RootState, sendMessage} from "@store";
+import {useAppSelector} from "@components/hooks/hooks.tsx";
 
 export const ChatInterface = () => {
-    const [messages, setMessages] = useState<Message[]>([
-        {id: 1, sender: Sender.Partner, text: "Hello! How can I help you?"},
-    ]);
+    // const dispatch = useAppDispatch(); // Correctly typed dispatch
+    const dispatch = useDispatch(); // Correctly typed dispatch
+
+    const messages = useAppSelector((state: RootState) => state.messages.messages);
+    const loading = useAppSelector((state: RootState) => state.messages.loading);
+
     const [inputValue, setInputValue] = useState<string>("");
 
     const handleSendMessage = () => {
         if (inputValue.trim() === "") return;
 
-        const newMessage: Message = {
+        const newMessage = {
             id: messages.length + 1,
             sender: Sender.Me,
             text: inputValue,
         };
 
-        // Add the user's message
-        setMessages((prevMessages) => [...prevMessages, newMessage]);
+        // Add the user's message immediately
+        dispatch(addMessage(newMessage));
 
         // Clear the input field
         setInputValue("");
 
-        // Simulate a partner response
-        setTimeout(() => {
-            const partnerResponse: Message = {
-                id: messages.length + 2,
-                sender: Sender.Partner,
-                text: "This is an automated response.",
-            };
-            setMessages((prevMessages) => [...prevMessages, partnerResponse]);
-        }, 1000);
+        // Dispatch the async thunk to send the message
+        dispatch(sendMessage(newMessage));
     };
 
     return (
@@ -50,6 +44,7 @@ export const ChatInterface = () => {
                     onSend={handleSendMessage}
                 />
             </div>
+            {loading && <p className="text-blue-500 mt-2">Sending...</p>}
         </div>
     );
 };
