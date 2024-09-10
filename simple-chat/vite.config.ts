@@ -10,7 +10,7 @@ export default defineConfig({
             // Match your `tsconfig.json` paths configuration
             '@': path.resolve(__dirname, './src'),
             '@components': path.resolve(__dirname, './src/components'),
-            '@enums': path.resolve(__dirname, './src/enums'),
+            '@types': path.resolve(__dirname, './src/types'),
             '@store': path.resolve(__dirname, './src/store'),
             // Add more aliases if needed
         },

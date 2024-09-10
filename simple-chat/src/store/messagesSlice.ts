@@ -1,11 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Sender} from "@enums";
-
-interface Message {
-    id: number;
-    sender: Sender;
-    text: string;
-}
+import {Message, Sender} from "@types";
 
 interface MessagesState {
     messages: Message[];
@@ -13,10 +7,17 @@ interface MessagesState {
     error: string | null;
 }
 
+//TODO date time utils
 // Initial state
 const initialState: MessagesState = {
     messages: [
-        {id: 1, sender: Sender.Partner, text: "Hello! How can I help you?"},
+        {
+            id: 1,
+            sender: Sender.Partner,
+            text: "Hello! How can I help you?",
+            user: {avatar: "", name: "AI"},
+            time: new Date().getUTCHours().toString()
+        },
     ],
     loading: false,
     error: null,
@@ -30,6 +31,8 @@ const dummySendMessage = async (message: Message): Promise<Message> => {
                 id: message.id + 1,
                 sender: Sender.Partner,
                 text: "This is an automated response.",
+                user: {avatar: "", name: "AI"},
+                time: new Date().getUTCHours().toString()
             });
         }, 1000);
     });

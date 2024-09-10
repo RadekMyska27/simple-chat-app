@@ -28,8 +28,8 @@
       "@components/*": [
         "./src/components/*"
       ],
-      "@enums/*": [
-        "./src/enums/*"
+      "@types/*": [
+        "./src/types/*"
       ]
     }
   },

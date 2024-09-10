@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 
-import {Sender} from "@enums";
+import {Sender} from "@types";
 import {ChatWindow, InputWithButton} from "@components";
 import {addMessage, RootState, sendMessage} from "@store";
 import {useAppSelector} from "@components/hooks/hooks.tsx";
