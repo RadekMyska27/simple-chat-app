@@ -5,6 +5,7 @@ import {Message, Sender} from "@types";
 import {ChatWindow, InputWithButton} from "@components";
 import {addMessage, RootState, sendMessage} from "@store";
 import {useAppSelector} from "@components/hooks/hooks.tsx";
+import {formatTime} from "@utils";
 
 export const ChatInterface = () => {
     const dispatch = useDispatch(); // Correctly typed dispatch
@@ -16,12 +17,11 @@ export const ChatInterface = () => {
     const handleSendMessage = () => {
         if (inputValue.trim() === "") return;
 
-        //TODO date time utils
         const newMessage: Message = {
             id: messages.length + 1,
             sender: Sender.Me,
             text: inputValue,
-            time: new Date().getHours().toString()
+            time: formatTime()
         };
 
         // Add the user's message immediately

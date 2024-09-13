@@ -1,5 +1,6 @@
 import {Avatar} from "flowbite-react";
 import {Message, Sender} from "@types";
+import {UserInfo} from "@components";
 
 export interface MessageHeaderProps {
     message: Message
@@ -7,8 +8,6 @@ export interface MessageHeaderProps {
 }
 
 export const MessageHeader = ({message, time}: MessageHeaderProps) => {
-    //TODO add icon for avatar
-
     const isAI = message.sender === Sender.Partner
     const name = isAI ? "AI" : "Me"
     const img = isAI ? "" : ""
@@ -23,10 +22,7 @@ export const MessageHeader = ({message, time}: MessageHeaderProps) => {
                 size="sm" // Choose the size for the avatar, e.g., 'xs', 'sm', 'md', 'lg'
                 className="mr-2"
             />
-            <div className="text-sm">
-                <span className="font-semibold">{name}</span>
-                <span className="text-xs text-gray-500 ml-2">{time}</span>
-            </div>
+            <UserInfo name={name} time={time}/>
         </div>
     );
 };
